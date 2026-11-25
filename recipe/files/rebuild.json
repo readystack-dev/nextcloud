@@ -1,0 +1,33 @@
+{
+  "bases": [
+    {
+      "digest": "sha256:9a04f13b3f80ef056361e30868593b1cfd2279fe19e4081cb93a90bf56819d6a",
+      "layout": "bases/ubuntu_24.04_9c7f200c07e3.oci",
+      "ref": "ubuntu:24.04@sha256:9c7f200c07e3d4a03e7249d2c16bf66a51120fb876aa2242cf31451412543289"
+    }
+  ],
+  "engine": {
+    "archive": "toolchain/buildkit.tar",
+    "image_digest": "sha256:e0e67ea9c4bb07bdef683e29f70f3b623d1eb9c82274a9ec04e6bb0511449fb0",
+    "kind": "buildkit",
+    "tag": "moby/buildkit:v0.31.2"
+  },
+  "inputs": {
+    "context": ".",
+    "dockerfile": "Dockerfile.offline.pinned",
+    "mtime_policy": "clamp",
+    "source_date_epoch": 1795543187,
+    "tree_hash": "sha256:1e34c16504c23378ad4478d02e38f8014dfaa8a9b3a63e1aa168d8c6ad72ea39"
+  },
+  "probe": {
+    "http_path": "/status.php",
+    "port": 8080,
+    "timeout_s": 180
+  },
+  "schema": "readystack-rebuild-bundle/v0.1",
+  "subject": {
+    "config_digest": "sha256:6454117c0339cb5a49cb6c1d02eaabdaf548ebd4fc04ade821e69f2405c51b33",
+    "image_manifest_digest": "sha256:81b3e2e48294362cd549f58b5b960db9496caaaca1f17d6c1e127e5b9208fadc",
+    "name": "docker.io/readystack/nextcloud:v35.0.3-CE-ubuntu24.04-r3"
+  }
+}

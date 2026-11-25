@@ -1,0 +1,177 @@
+{
+  "schema": "kitforge.build_recipe.v1",
+  "slug": "nextcloud",
+  "image": "readystack/nextcloud:v35.0.3-CE-ubuntu24.04-r3",
+  "build_method": "source-rebuild-php",
+  "source": {
+    "repo": "https://github.com/nextcloud/server",
+    "ref": "v35.0.3",
+    "php_version": "8.3",
+    "_php_version_note": "composer.json config.platform.php = 8.3 and require php ^8.3; lib/versioncheck.php refuses PHP < 8.3 and >= 8.6. Since 2026-10-10 the image runs Ubuntu 24.04's own PHP 8.3 (it reports 8.3.6; Ubuntu backports security fixes into it) instead of the official php:8.4-apache-bookworm image, whose Debian 12 base our cerodeo-v1 scan grades F on vulnerabilities Debian does not fix. (Its recorded scan of v35.0.1-CE-debian-bookworm-r1: 30 unfixed critical, 172 unfixed high, 0 fixable.) 8.3 is exactly Nextcloud 35's floor, so a Nextcloud release that raises it cannot run on this image. PHP 8.4 on Ubuntu 24.04 would need a third-party archive (a PPA): a supply-chain decision, not taken here; preflight check_php BLOCKs a retarget whose source needs more than the image's PHP.",
+    "submodules": [
+      "3rdparty"
+    ],
+    "submodule_init_cmd": "git submodule update --init --recursive --depth 1 3rdparty",
+    "composer_install_cmd": "",
+    "_composer_note": "NO `composer install` for the runtime: Nextcloud's runtime autoloader is 3rdparty/autoload.php and the 3rdparty git submodule IS the pre-vendored composer output (composer.json's lib/composer vendor-dir is only the bamarni dev bin plugin, not runtime). NO npm/webpack frontend build either: the built dist/ (sass css + esbuild js) is COMMITTED at the v34.0.1 tag (Makefile `clean-git: git checkout -- dist`). So the vendor stage = clone the tag + init the 3rdparty submodule, and the git tree + 3rdparty == the official signed nextcloud-34.0.1.tar.bz2 minus updater/. dep_bumps (composer CVE remediation) are applied IN the vendor stage by editing 3rdparty/composer.json (or the bundled app's composer.json) + running `composer update <pkg> --with-dependencies` inside that dir so installed.json + autoload regenerate (BOTH the on-disk files and the syft-read installed.json must change -- the L-026/php-composer-overlay rule).",
+    "build_packages": [
+      "git",
+      "unzip",
+      "ca-certificates"
+    ],
+    "_build_packages_note": "Vendor stage only: git + ca-certificates for the clone and the 3rdparty submodule (unzip for composer work inside 3rdparty). Nothing is compiled on the Ubuntu path, so there are no -dev packages; PHP, its extensions and Apache are runtime_packages, vendored as debs.",
+    "php_extensions": [
+      "apcu",
+      "ctype",
+      "curl",
+      "dom",
+      "fileinfo",
+      "gd",
+      "libxml",
+      "mbstring",
+      "openssl",
+      "pdo",
+      "posix",
+      "session",
+      "simplexml",
+      "xml",
+      "xmlreader",
+      "xmlwriter",
+      "zip",
+      "zlib",
+      "intl",
+      "gmp",
+      "bcmath",
+      "exif",
+      "pcntl",
+      "sysvsem",
+      "opcache",
+      "pdo_sqlite",
+      "sqlite3"
+    ],
+    "_ext_note": "Matches the upstream nextcloud/docker Dockerfile MINUS the external-DB exts (pdo_mysql/pdo_pgsql), ldap and imagick -- dropped for the lean SQLite-default CE image (Ubuntu's php8.3-common carries ftp, which upstream's image also has). source.php_extensions = composer.json's ext-* requirements + the extensions compiled until 2026-10-10 + pdo_sqlite/sqlite3 (the embedded database); the build asserts each is loaded in both the Apache and the CLI configuration. APCu is Ubuntu's php8.3-apcu 5.1.22 (universe; the pecl build before was 5.1.28); apc.enable_cli=1 is in nextcloud.ini because occ runs on the CLI.",
+    "prune_paths": [
+      ".git",
+      ".github",
+      ".devcontainer",
+      ".tx",
+      ".idea",
+      "tests",
+      "cypress",
+      "build",
+      "contribute",
+      "updater"
+    ],
+    "_prune_note": "Strip dev/test/CI trees from the runtime image (the PHP CE-audit + size + Scout-noise reduction). `updater/` is removed exactly as the upstream image does (managed updates are out of scope for an immutable CE image). The committed dist/, 3rdparty/, apps/, core/, lib/, ocs/, ocs-provider/, resources/, themes/ + the root *.php / .htaccess / .user.ini / occ / robots.txt are KEPT (enumerated in app_copies).",
+    "app_copies": [
+      {
+        "src": "3rdparty",
+        "dst": "/var/www/html/3rdparty"
+      },
+      {
+        "src": "apps",
+        "dst": "/var/www/html/apps"
+      },
+      {
+        "src": "config",
+        "dst": "/var/www/html/config"
+      },
+      {
+        "src": "core",
+        "dst": "/var/www/html/core"
+      },
+      {
+        "src": "dist",
+        "dst": "/var/www/html/dist"
+      },
+      {
+        "src": "lib",
+        "dst": "/var/www/html/lib"
+      },
+      {
+        "src": "ocs",
+        "dst": "/var/www/html/ocs"
+      },
+      {
+        "src": "ocs-provider",
+        "dst": "/var/www/html/ocs-provider"
+      },
+      {
+        "src": "resources",
+        "dst": "/var/www/html/resources"
+      },
+      {
+        "src": "themes",
+        "dst": "/var/www/html/themes"
+      },
+      {
+        "src": ".htaccess",
+        "dst": "/var/www/html/.htaccess"
+      },
+      {
+        "src": ".user.ini",
+        "dst": "/var/www/html/.user.ini"
+      },
+      {
+        "src": "console.php",
+        "dst": "/var/www/html/console.php"
+      },
+      {
+        "src": "cron.php",
+        "dst": "/var/www/html/cron.php"
+      },
+      {
+        "src": "index.php",
+        "dst": "/var/www/html/index.php"
+      },
+      {
+        "src": "occ",
+        "dst": "/var/www/html/occ"
+      },
+      {
+        "src": "public.php",
+        "dst": "/var/www/html/public.php"
+      },
+      {
+        "src": "remote.php",
+        "dst": "/var/www/html/remote.php"
+      },
+      {
+        "src": "robots.txt",
+        "dst": "/var/www/html/robots.txt"
+      },
+      {
+        "src": "status.php",
+        "dst": "/var/www/html/status.php"
+      },
+      {
+        "src": "version.php",
+        "dst": "/var/www/html/version.php"
+      }
+    ],
+    "source_date_epoch": 1795543187,
+    "source_date_epoch_provenance": "the time release v35.0.3-CE-ubuntu24.04-r3 was cut (2026-11-24T17:59:47Z), by scripts/rerelease-agenda.py: ReadyStack dates an image by when its release was packaged (owner 2026-11-10), recorded here once and used by every rebuild of the release; it builds upstream commit 7764ef4927e5, dated 2026-11-12T13:17:44Z (source.commit_epoch).",
+    "commit": "7764ef4927e5f85071e495ce7602ccd247bb6b30",
+    "source_date_epoch_basis": "release-cut",
+    "commit_epoch": 1794489464
+  },
+  "binaries_from_source": null,
+  "runtime_packages": [
+    "apache2",
+    "libapache2-mod-php8.3",
+    "php8.3-cli",
+    "php8.3-curl",
+    "php8.3-mbstring",
+    "php8.3-xml",
+    "php8.3-gd",
+    "php8.3-intl",
+    "php8.3-zip",
+    "php8.3-gmp",
+    "php8.3-bcmath",
+    "php8.3-sqlite3",
+    "php8.3-apcu",
+    "ca-certificates",
+    "curl",
+    "tzdata"
+  ]
+}

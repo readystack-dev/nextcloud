@@ -1,0 +1,256 @@
+{
+  "apt_refresh": [
+    {
+      "min_version": "8.3.6-0ubuntu0.24.04.13",
+      "package": "php8.3-zip",
+      "reason": "CVE-2026-109618, CVE-2026-109619: php8.3-zip 8.3.6-0ubuntu0.24.04.12 -> 8.3.6-0ubuntu0.24.04.13"
+    },
+    {
+      "min_version": "2.8.4ubuntu0.1",
+      "package": "apt",
+      "reason": "CVE-2026-109518: apt 2.8.3 -> 2.8.4ubuntu0.1"
+    },
+    {
+      "min_version": "2.8.4ubuntu0.1",
+      "package": "libapt-pkg6.0t64",
+      "reason": "CVE-2026-109518: libapt-pkg6.0t64 2.8.3 -> 2.8.4ubuntu0.1"
+    },
+    {
+      "min_version": "10.42-4ubuntu2.2",
+      "package": "libpcre2-8-0",
+      "reason": "CVE-2026-103111, CVE-2026-86145, CVE-2026-89156, CVE-2026-89157 \u2026: libpcre2-8-0 10.42-4ubuntu2.1 -> 10.42-4ubuntu2.2"
+    },
+    {
+      "min_version": "2.4.58-1ubuntu8.19",
+      "package": "apache2",
+      "reason": "UBUNTU-CVE-2026-119618: apache2 2.4.58-1ubuntu8.18 -> 2.4.58-1ubuntu8.19"
+    },
+    {
+      "min_version": "2.4.58-1ubuntu8.19",
+      "package": "apache2-bin",
+      "reason": "UBUNTU-CVE-2026-119618: apache2-bin 2.4.58-1ubuntu8.18 -> 2.4.58-1ubuntu8.19"
+    },
+    {
+      "min_version": "2.4.58-1ubuntu8.19",
+      "package": "apache2-data",
+      "reason": "UBUNTU-CVE-2026-119618: apache2-data 2.4.58-1ubuntu8.18 -> 2.4.58-1ubuntu8.19"
+    },
+    {
+      "min_version": "2.4.58-1ubuntu8.19",
+      "package": "apache2-utils",
+      "reason": "UBUNTU-CVE-2026-119618: apache2-utils 2.4.58-1ubuntu8.18 -> 2.4.58-1ubuntu8.19"
+    },
+    {
+      "min_version": "5.38.2-3.2ubuntu0.7",
+      "package": "libperl5.38t64",
+      "reason": "USN-9006-1: libperl5.38t64 5.38.2-3.2ubuntu0.6 -> 5.38.2-3.2ubuntu0.7"
+    },
+    {
+      "min_version": "5.38.2-3.2ubuntu0.7",
+      "package": "perl",
+      "reason": "USN-9006-1: perl 5.38.2-3.2ubuntu0.6 -> 5.38.2-3.2ubuntu0.7"
+    },
+    {
+      "min_version": "5.38.2-3.2ubuntu0.7",
+      "package": "perl-base",
+      "reason": "USN-9006-1: perl-base 5.38.2-3.2ubuntu0.6 -> 5.38.2-3.2ubuntu0.7"
+    },
+    {
+      "min_version": "5.38.2-3.2ubuntu0.7",
+      "package": "perl-modules-5.38",
+      "reason": "USN-9006-1: perl-modules-5.38 5.38.2-3.2ubuntu0.6 -> 5.38.2-3.2ubuntu0.7"
+    },
+    {
+      "min_version": "0.10.6-2ubuntu0.6",
+      "package": "libssh-4",
+      "reason": "USN-9187-1: libssh-4 0.10.6-2ubuntu0.5 -> 0.10.6-2ubuntu0.6"
+    }
+  ],
+  "build_method": "source-rebuild-php",
+  "chain_id": 1212,
+  "dep_bumps": [
+    {
+      "dir": "3rdparty",
+      "module": "symfony/http-foundation",
+      "to": "7.4.23",
+      "why": "CVE-2026-118514 (PKSA-24ph-xkrh-y79j) and PKSA-pr6q-2w5s-kzzf, PKSA-nxjs-s6hn-vb6m, PKSA-b2gg-vk1g-6d5q (Packagist): affected below 7.4.23 on the 7.4 line. Nextcloud v35.0.3's 3rdparty composer.json requires ^7.4.21 and its lock holds 7.4.21, so the floor the v35.0.3 retarget cleared (2026-11-14) is still needed"
+    }
+  ],
+  "expected_residuals": [],
+  "images": [
+    {
+      "digest": "sha256:9c7f200c07e3d4a03e7249d2c16bf66a51120fb876aa2242cf31451412543289",
+      "ref": "ubuntu:24.04",
+      "role": "base"
+    }
+  ],
+  "mod_replaces": [],
+  "runtime_packages": [
+    "apache2",
+    "libapache2-mod-php8.3",
+    "php8.3-cli",
+    "php8.3-curl",
+    "php8.3-mbstring",
+    "php8.3-xml",
+    "php8.3-gd",
+    "php8.3-intl",
+    "php8.3-zip",
+    "php8.3-gmp",
+    "php8.3-bcmath",
+    "php8.3-sqlite3",
+    "php8.3-apcu",
+    "ca-certificates",
+    "curl",
+    "tzdata"
+  ],
+  "schema": "kitforge.toolchain_lock.v1",
+  "slug": "nextcloud",
+  "source": {
+    "app_copies": [
+      {
+        "dst": "/var/www/html/3rdparty",
+        "src": "3rdparty"
+      },
+      {
+        "dst": "/var/www/html/apps",
+        "src": "apps"
+      },
+      {
+        "dst": "/var/www/html/config",
+        "src": "config"
+      },
+      {
+        "dst": "/var/www/html/core",
+        "src": "core"
+      },
+      {
+        "dst": "/var/www/html/dist",
+        "src": "dist"
+      },
+      {
+        "dst": "/var/www/html/lib",
+        "src": "lib"
+      },
+      {
+        "dst": "/var/www/html/ocs",
+        "src": "ocs"
+      },
+      {
+        "dst": "/var/www/html/ocs-provider",
+        "src": "ocs-provider"
+      },
+      {
+        "dst": "/var/www/html/resources",
+        "src": "resources"
+      },
+      {
+        "dst": "/var/www/html/themes",
+        "src": "themes"
+      },
+      {
+        "dst": "/var/www/html/.htaccess",
+        "src": ".htaccess"
+      },
+      {
+        "dst": "/var/www/html/.user.ini",
+        "src": ".user.ini"
+      },
+      {
+        "dst": "/var/www/html/console.php",
+        "src": "console.php"
+      },
+      {
+        "dst": "/var/www/html/cron.php",
+        "src": "cron.php"
+      },
+      {
+        "dst": "/var/www/html/index.php",
+        "src": "index.php"
+      },
+      {
+        "dst": "/var/www/html/occ",
+        "src": "occ"
+      },
+      {
+        "dst": "/var/www/html/public.php",
+        "src": "public.php"
+      },
+      {
+        "dst": "/var/www/html/remote.php",
+        "src": "remote.php"
+      },
+      {
+        "dst": "/var/www/html/robots.txt",
+        "src": "robots.txt"
+      },
+      {
+        "dst": "/var/www/html/status.php",
+        "src": "status.php"
+      },
+      {
+        "dst": "/var/www/html/version.php",
+        "src": "version.php"
+      }
+    ],
+    "build_packages": [
+      "git",
+      "unzip",
+      "ca-certificates"
+    ],
+    "commit": "7764ef4927e5f85071e495ce7602ccd247bb6b30",
+    "commit_epoch": 1794489464,
+    "composer_install_cmd": "",
+    "php_extensions": [
+      "apcu",
+      "ctype",
+      "curl",
+      "dom",
+      "fileinfo",
+      "gd",
+      "libxml",
+      "mbstring",
+      "openssl",
+      "pdo",
+      "posix",
+      "session",
+      "simplexml",
+      "xml",
+      "xmlreader",
+      "xmlwriter",
+      "zip",
+      "zlib",
+      "intl",
+      "gmp",
+      "bcmath",
+      "exif",
+      "pcntl",
+      "sysvsem",
+      "opcache",
+      "pdo_sqlite",
+      "sqlite3"
+    ],
+    "php_version": "8.3",
+    "prune_paths": [
+      ".git",
+      ".github",
+      ".devcontainer",
+      ".tx",
+      ".idea",
+      "tests",
+      "cypress",
+      "build",
+      "contribute",
+      "updater"
+    ],
+    "ref": "v35.0.3",
+    "repo": "https://github.com/nextcloud/server",
+    "source_date_epoch": 1795543187,
+    "source_date_epoch_basis": "release-cut",
+    "source_date_epoch_provenance": "the time release v35.0.3-CE-ubuntu24.04-r3 was cut (2026-11-24T17:59:47Z), by scripts/rerelease-agenda.py: ReadyStack dates an image by when its release was packaged (owner 2026-11-10), recorded here once and used by every rebuild of the release; it builds upstream commit 7764ef4927e5, dated 2026-11-12T13:17:44Z (source.commit_epoch).",
+    "submodule_init_cmd": "git submodule update --init --recursive --depth 1 3rdparty",
+    "submodules": [
+      "3rdparty"
+    ]
+  },
+  "version": "v35.0.3"
+}

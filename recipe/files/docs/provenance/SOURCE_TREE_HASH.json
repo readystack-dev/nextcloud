@@ -1,0 +1,9 @@
+{
+  "schema": "kitforge.source_tree_hash.v1",
+  "slug": "nextcloud",
+  "repo": "https://github.com/nextcloud/server",
+  "ref": "v35.0.3",
+  "commit": "7764ef4927e5f85071e495ce7602ccd247bb6b30",
+  "tree_listing_sha256": "a3a9467ca3149a46784379c14831cbffae9abc83950a88981e7fbdeb4b434b2b",
+  "file_count": 18897
+}
