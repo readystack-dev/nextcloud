@@ -1,14 +1,14 @@
-# Build kit for `readystack/nextcloud:v35.0.3-CE-ubuntu24.04-r3`
+# Build kit for `readystack/nextcloud:v35.0.3-CE-ubuntu24.04-r4`
 
-This archive rebuilds the linux/amd64 image `readystack/nextcloud:v35.0.3-CE-ubuntu24.04-r3` from its own contents, with the network off, and checks the result against the image digest ReadyStack published, `sha256:81b3e2e48294362cd549f58b5b960db9496caaaca1f17d6c1e127e5b9208fadc` (also in `TARGET_DIGEST.txt`). It holds everything the build needs, not the image itself.
+This archive rebuilds the linux/amd64 image `readystack/nextcloud:v35.0.3-CE-ubuntu24.04-r4` from its own contents, with the network off, and checks the result against the image digest ReadyStack published, `sha256:605031a111886b3ea686ffe9311ed67605436fb17128739db38590b9035188d1` (also in `TARGET_DIGEST.txt`). It holds everything the build needs, not the image itself.
 
 ## Rebuild it
 
 You need linux/amd64 Docker with `buildx` 0.30 or later, `jq` and `tar` (docs/REBUILD.md lists the rest, if any, and the hardware ReadyStack used).
 
 ```
-tar -xpzf ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r3.tar.gz    # -p keeps each file's mode
-cd v35.0.3-CE-ubuntu24.04-r3
+tar -xpzf ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r4.tar.gz    # -p keeps each file's mode
+cd v35.0.3-CE-ubuntu24.04-r4
 ./BUILD_OFFLINE.sh            # builds with the network off, from this archive alone
 ./VERIFY_OFFLINE.sh           # compares the rebuilt digest with the published one, then checks the image
 ```
@@ -23,8 +23,8 @@ ReadyStack signs this archive's `rebuild.json` with its release key once the fin
 
 ```
 curl -fsSLo ../cosign.pub https://readystack.dev/keys/cosign.pub
-curl -fsSLo ../ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r3.rebuild.json.sigstore https://readystack.dev/api/kit/nextcloud/v35.0.3-CE-ubuntu24.04-r3/files/ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r3.rebuild.json.sigstore
-python3 docs/rebuild-bundle/rebuild_bundle.py validate . --key ../cosign.pub --signature ../ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r3.rebuild.json.sigstore
+curl -fsSLo ../ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r4.rebuild.json.sigstore https://readystack.dev/api/kit/nextcloud/v35.0.3-CE-ubuntu24.04-r4/files/ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r4.rebuild.json.sigstore
+python3 docs/rebuild-bundle/rebuild_bundle.py validate . --key ../cosign.pub --signature ../ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r4.rebuild.json.sigstore
 ```
 
 `validate` needs Python 3 and cosign. Without building anything it checks the signature over `rebuild.json`, every file's checksum, the tree hash over every file's path, mode and content, each base image layout's digest and the builder archive. `verify`, with the same arguments, also rebuilds with the builder's network egress blocked and exits 0 only when the rebuilt digest is the published one (docs/REBUILD.md).

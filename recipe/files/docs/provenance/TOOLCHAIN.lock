@@ -64,10 +64,20 @@
       "min_version": "0.10.6-2ubuntu0.6",
       "package": "libssh-4",
       "reason": "USN-9187-1: libssh-4 0.10.6-2ubuntu0.5 -> 0.10.6-2ubuntu0.6"
+    },
+    {
+      "min_version": "1.17.6-1ubuntu4.10",
+      "package": "libheif-plugin-aomdec",
+      "reason": "USN-8846-2: libheif-plugin-aomdec 1.17.6-1ubuntu4.9 -> 1.17.6-1ubuntu4.10"
+    },
+    {
+      "min_version": "1.17.6-1ubuntu4.10",
+      "package": "libheif1",
+      "reason": "USN-8846-2: libheif1 1.17.6-1ubuntu4.9 -> 1.17.6-1ubuntu4.10"
     }
   ],
   "build_method": "source-rebuild-php",
-  "chain_id": 1212,
+  "chain_id": 1256,
   "dep_bumps": [
     {
       "dir": "3rdparty",
@@ -244,9 +254,9 @@
     ],
     "ref": "v35.0.3",
     "repo": "https://github.com/nextcloud/server",
-    "source_date_epoch": 1795543187,
+    "source_date_epoch": 1795600835,
     "source_date_epoch_basis": "release-cut",
-    "source_date_epoch_provenance": "the time release v35.0.3-CE-ubuntu24.04-r3 was cut (2026-11-24T17:59:47Z), by scripts/rerelease-agenda.py: ReadyStack dates an image by when its release was packaged (owner 2026-11-10), recorded here once and used by every rebuild of the release; it builds upstream commit 7764ef4927e5, dated 2026-11-12T13:17:44Z (source.commit_epoch).",
+    "source_date_epoch_provenance": "the time release v35.0.3-CE-ubuntu24.04-r4 was cut (2026-11-25T10:00:35Z), by scripts/rerelease-agenda.py: ReadyStack dates an image by when its release was packaged (owner 2026-11-10), recorded here once and used by every rebuild of the release; it builds upstream commit 7764ef4927e5, dated 2026-11-12T13:17:44Z (source.commit_epoch).",
     "submodule_init_cmd": "git submodule update --init --recursive --depth 1 3rdparty",
     "submodules": [
       "3rdparty"

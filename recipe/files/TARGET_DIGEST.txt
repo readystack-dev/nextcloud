@@ -1,6 +1,6 @@
-image_manifest_digest=sha256:81b3e2e48294362cd549f58b5b960db9496caaaca1f17d6c1e127e5b9208fadc
-config_digest=sha256:6454117c0339cb5a49cb6c1d02eaabdaf548ebd4fc04ade821e69f2405c51b33
-tag=readystack/nextcloud:v35.0.3-CE-ubuntu24.04-r3
+image_manifest_digest=sha256:605031a111886b3ea686ffe9311ed67605436fb17128739db38590b9035188d1
+config_digest=sha256:562a4fdf94b2e28fd1655cf69521791d4fb118bf8d39e3e43515588d52695d7d
+tag=readystack/nextcloud:v35.0.3-CE-ubuntu24.04-r4
 probe_port=8080
 probe_path=/status.php
 probe_timeout=180
