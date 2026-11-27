@@ -16,8 +16,8 @@
     "context": ".",
     "dockerfile": "Dockerfile.offline.pinned",
     "mtime_policy": "clamp",
-    "source_date_epoch": 1795600835,
-    "tree_hash": "sha256:7a7c14f6e4f25baa7b7cc3cecc013f488064963425071538a37032f39b78b7d7"
+    "source_date_epoch": 1795644311,
+    "tree_hash": "sha256:3629e19ca989d4d6b483de1bfb4cebc276d3e0d4e50c32a2fe5f569d59ce7ab3"
   },
   "probe": {
     "http_path": "/status.php",
@@ -26,8 +26,8 @@
   },
   "schema": "readystack-rebuild-bundle/v0.1",
   "subject": {
-    "config_digest": "sha256:562a4fdf94b2e28fd1655cf69521791d4fb118bf8d39e3e43515588d52695d7d",
-    "image_manifest_digest": "sha256:605031a111886b3ea686ffe9311ed67605436fb17128739db38590b9035188d1",
-    "name": "docker.io/readystack/nextcloud:v35.0.3-CE-ubuntu24.04-r4"
+    "config_digest": "sha256:751455f403c12f17dc30c2046d53d276b82ba996c2fdfd1b65b9eeb70dfea80a",
+    "image_manifest_digest": "sha256:46553729cce3e7279ccafd8d95f83ab2494f799b421747094576581286d32fee",
+    "name": "docker.io/readystack/nextcloud:v35.0.3-CE-ubuntu24.04-r5"
   }
 }

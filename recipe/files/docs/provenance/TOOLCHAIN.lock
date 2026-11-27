@@ -74,10 +74,15 @@
       "min_version": "1.17.6-1ubuntu4.10",
       "package": "libheif1",
       "reason": "USN-8846-2: libheif1 1.17.6-1ubuntu4.9 -> 1.17.6-1ubuntu4.10"
+    },
+    {
+      "min_version": "2.6.1-2ubuntu0.7",
+      "package": "libexpat1",
+      "reason": "USN-9196-1: libexpat1 2.6.1-2ubuntu0.6 -> 2.6.1-2ubuntu0.7"
     }
   ],
   "build_method": "source-rebuild-php",
-  "chain_id": 1256,
+  "chain_id": 1275,
   "dep_bumps": [
     {
       "dir": "3rdparty",
@@ -254,9 +259,9 @@
     ],
     "ref": "v35.0.3",
     "repo": "https://github.com/nextcloud/server",
-    "source_date_epoch": 1795600835,
+    "source_date_epoch": 1795644311,
     "source_date_epoch_basis": "release-cut",
-    "source_date_epoch_provenance": "the time release v35.0.3-CE-ubuntu24.04-r4 was cut (2026-11-25T10:00:35Z), by scripts/rerelease-agenda.py: ReadyStack dates an image by when its release was packaged (owner 2026-11-10), recorded here once and used by every rebuild of the release; it builds upstream commit 7764ef4927e5, dated 2026-11-12T13:17:44Z (source.commit_epoch).",
+    "source_date_epoch_provenance": "the time release v35.0.3-CE-ubuntu24.04-r5 was cut (2026-11-25T22:05:11Z), by scripts/rerelease-agenda.py: ReadyStack dates an image by when its release was packaged (owner 2026-11-10), recorded here once and used by every rebuild of the release; it builds upstream commit 7764ef4927e5, dated 2026-11-12T13:17:44Z (source.commit_epoch).",
     "submodule_init_cmd": "git submodule update --init --recursive --depth 1 3rdparty",
     "submodules": [
       "3rdparty"

@@ -1,12 +1,12 @@
 # Nextcloud: ReadyStack build kit
 
-The offline build kit for the Docker image `readystack/nextcloud:v35.0.3-CE-ubuntu24.04-r4`. It holds what the image is built from (upstream source, base images, toolchain, pinned dependencies) and the documents, so the image can be rebuilt with no network access (`docker build --network=none`).
+The offline build kit for the Docker image `readystack/nextcloud:v35.0.3-CE-ubuntu24.04-r5`. It holds what the image is built from (upstream source, base images, toolchain, pinned dependencies) and the documents, so the image can be rebuilt with no network access (`docker build --network=none`).
 
-- Release: [v35.0.3-CE-ubuntu24.04-r4](https://github.com/readystack-dev/nextcloud/releases/tag/v35.0.3-CE-ubuntu24.04-r4)
-- Image: [`docker.io/readystack/nextcloud:v35.0.3-CE-ubuntu24.04-r4`](https://hub.docker.com/r/readystack/nextcloud/tags), manifest digest `sha256:605031a111886b3ea686ffe9311ed67605436fb17128739db38590b9035188d1`
+- Release: [v35.0.3-CE-ubuntu24.04-r5](https://github.com/readystack-dev/nextcloud/releases/tag/v35.0.3-CE-ubuntu24.04-r5)
+- Image: [`docker.io/readystack/nextcloud:v35.0.3-CE-ubuntu24.04-r5`](https://hub.docker.com/r/readystack/nextcloud/tags), manifest digest `sha256:46553729cce3e7279ccafd8d95f83ab2494f799b421747094576581286d32fee`
 - Product page: https://readystack.dev/products/nextcloud
 - Source and build recipe: https://readystack.dev/products/nextcloud/recipe
-- Build trail: https://readystack.dev/products/nextcloud/trail/v35.0.3-CE-ubuntu24.04-r4
+- Build trail: https://readystack.dev/products/nextcloud/trail/v35.0.3-CE-ubuntu24.04-r5
 - Defects: this repository's Issues (defects recorded from 25 November 2026 on) and https://readystack.dev/defects.html?product=nextcloud
 
 ## The image
@@ -39,7 +39,7 @@ Nextcloud is distributed under its upstream licence (AGPL-3.0-or-later); the kit
 
 ## Download
 
-From the [v35.0.3-CE-ubuntu24.04-r4 release](https://github.com/readystack-dev/nextcloud/releases/tag/v35.0.3-CE-ubuntu24.04-r4): `ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r4.tar.gz` (370.9 MB), SHA-256 `8b29f6350623f486ea8dd97167dce709b8869e088b11f33ecb084246cb8b5093`.
+From the [v35.0.3-CE-ubuntu24.04-r5 release](https://github.com/readystack-dev/nextcloud/releases/tag/v35.0.3-CE-ubuntu24.04-r5): `ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r5.tar.gz` (371.0 MB), SHA-256 `c4cd2399a1f7d72e580657b88cb034d77fdfe1d097256f4f973130e013c0c675`.
 
 ```sh
 sha256sum --check --ignore-missing SHA256SUMS
@@ -51,18 +51,18 @@ The rebuild statement is signed with the ReadyStack release key. Check the signa
 
 ```sh
 cosign verify-blob --key https://readystack.dev/keys/cosign.pub \
-  --bundle ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r4.rebuild.json.sigstore ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r4.rebuild.json
+  --bundle ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r5.rebuild.json.sigstore ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r5.rebuild.json
 ```
 
 Unpack with `-p` so file modes are kept, then follow the kit's own README.md and docs/REBUILD.md:
 
 ```sh
-tar -xpzf ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r4.tar.gz
-cd v35.0.3-CE-ubuntu24.04-r4
+tar -xpzf ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r5.tar.gz
+cd v35.0.3-CE-ubuntu24.04-r5
 less README.md docs/REBUILD.md
 ```
 
-The build trail (`ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r4.trail.json`, signed the same way, and its Markdown copy) records how this release was built and checked.
+The build trail (`ReadyStack-nextcloud-v35.0.3-CE-ubuntu24.04-r5.trail.json`, signed the same way, and its Markdown copy) records how this release was built and checked.
 
 ## This repository
 

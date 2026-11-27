@@ -33,7 +33,7 @@ RUN chmod 0755 /usr/local/bin/apache2-foreground && \
 RUN for sapi in apache2 cli; do \
       PHP_INI_SCAN_DIR=/etc/php/8.3/$sapi/conf.d php -c /etc/php/8.3/$sapi/php.ini -r '$m = array_map("strtolower", array_merge(get_loaded_extensions(), get_loaded_extensions(true))); $x = array_diff(array_slice($argv, 1), $m); if ($x) { fwrite(STDERR, "missing PHP extensions: " . implode(", ", $x) . "\n"); exit(1); }' "apcu" "ctype" "curl" "dom" "fileinfo" "gd" "libxml" "mbstring" "openssl" "pdo" "posix" "session" "simplexml" "xml" "xmlreader" "xmlwriter" "zip" "zlib" "intl" "gmp" "bcmath" "exif" "pcntl" "sysvsem" "zend opcache" "pdo_sqlite" "sqlite3" || { echo "for the $sapi configuration"; exit 1; }; \
     done
-ARG SOURCE_DATE_EPOCH=1795600835
+ARG SOURCE_DATE_EPOCH=1795644311
 RUN (getent passwd www-data >/dev/null 2>&1 || (groupadd -r www-data && useradd -r -g www-data -d /var/www/html www-data)) && \
     mkdir -p /var/www/html/data /var/www/html/config /var/run/apache2 /var/lock/apache2 /var/log/apache2 && \
     : "${SOURCE_DATE_EPOCH:?SOURCE_DATE_EPOCH must be set for a reproducible build}" && \
@@ -69,7 +69,7 @@ RUN chown -R www-data:www-data /var/www/html/data /var/www/html/config /var/run/
 LABEL org.opencontainers.image.title="Nextcloud"
 LABEL org.opencontainers.image.source="https://github.com/nextcloud/server"
 LABEL org.opencontainers.image.licenses="AGPL-3.0-or-later"
-LABEL org.opencontainers.image.version="v35.0.3-CE-ubuntu24.04-r4"
+LABEL org.opencontainers.image.version="v35.0.3-CE-ubuntu24.04-r5"
 LABEL org.opencontainers.image.description="Nextcloud Server — a self-hosted, AGPL-licensed content-collaboration platform (files, sharing, calendar, contacts; PHP/Apache)."
 LABEL org.opencontainers.image.vendor="Nextcloud GmbH"
 LABEL com.readystack.license.disclosure="This image includes Nextcloud Server (https://github.com/nextcloud/server), licensed under AGPL-3.0-or-later. Modifications: the build deletes tests/, build/, .github/, .devcontainer/, contribute/, .idea/ and .tx/ (1,326 files a running server does not use, all listed in upstream's own .nextcloudignore as files removed at build time), and raises symfony/http-foundation from v7.4.21 to v7.4.23 inside the bundled 3rdparty composer tree (composer update: its composer.lock, composer/installed.json, composer/installed.php and the package's own files); full diff at https://readystack.dev/source/nextcloud/v35.0.3/nextcloud-v35.0.3-readystack.patch. Other security patches are applied only via vendored updates to upstream-published apt dependencies (unmodified). ReadyStack license holders have access to the image build recipe and patched-package manifest on request via contact@readystack.dev."
