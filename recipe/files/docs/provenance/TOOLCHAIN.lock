@@ -79,10 +79,30 @@
       "min_version": "2.6.1-2ubuntu0.7",
       "package": "libexpat1",
       "reason": "USN-9196-1: libexpat1 2.6.1-2ubuntu0.6 -> 2.6.1-2ubuntu0.7"
+    },
+    {
+      "min_version": "1.20.1-6ubuntu2.12",
+      "package": "libgssapi-krb5-2",
+      "reason": "USN-9202-1: libgssapi-krb5-2 1.20.1-6ubuntu2.10 -> 1.20.1-6ubuntu2.12"
+    },
+    {
+      "min_version": "1.20.1-6ubuntu2.12",
+      "package": "libk5crypto3",
+      "reason": "USN-9202-1: libk5crypto3 1.20.1-6ubuntu2.10 -> 1.20.1-6ubuntu2.12"
+    },
+    {
+      "min_version": "1.20.1-6ubuntu2.12",
+      "package": "libkrb5-3",
+      "reason": "USN-9202-1: libkrb5-3 1.20.1-6ubuntu2.10 -> 1.20.1-6ubuntu2.12"
+    },
+    {
+      "min_version": "1.20.1-6ubuntu2.12",
+      "package": "libkrb5support0",
+      "reason": "USN-9202-1: libkrb5support0 1.20.1-6ubuntu2.10 -> 1.20.1-6ubuntu2.12"
     }
   ],
   "build_method": "source-rebuild-php",
-  "chain_id": 1275,
+  "chain_id": 1284,
   "dep_bumps": [
     {
       "dir": "3rdparty",
@@ -259,9 +279,9 @@
     ],
     "ref": "v35.0.3",
     "repo": "https://github.com/nextcloud/server",
-    "source_date_epoch": 1795644311,
+    "source_date_epoch": 1795672791,
     "source_date_epoch_basis": "release-cut",
-    "source_date_epoch_provenance": "the time release v35.0.3-CE-ubuntu24.04-r5 was cut (2026-11-25T22:05:11Z), by scripts/rerelease-agenda.py: ReadyStack dates an image by when its release was packaged (owner 2026-11-10), recorded here once and used by every rebuild of the release; it builds upstream commit 7764ef4927e5, dated 2026-11-12T13:17:44Z (source.commit_epoch).",
+    "source_date_epoch_provenance": "the time release v35.0.3-CE-ubuntu24.04-r6 was cut (2026-11-26T05:59:51Z), by scripts/rerelease-agenda.py: ReadyStack dates an image by when its release was packaged (owner 2026-11-10), recorded here once and used by every rebuild of the release; it builds upstream commit 7764ef4927e5, dated 2026-11-12T13:17:44Z (source.commit_epoch).",
     "submodule_init_cmd": "git submodule update --init --recursive --depth 1 3rdparty",
     "submodules": [
       "3rdparty"
